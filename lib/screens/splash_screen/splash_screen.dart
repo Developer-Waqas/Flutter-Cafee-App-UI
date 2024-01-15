@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cafee_app/constants/app_style/app_style.dart';
 import 'package:flutter/material.dart';
 
 import '../../utilities/routes/routes_name/routes_name.dart';
@@ -31,6 +32,18 @@ class _SplashScreenState extends State<SplashScreen> {
         image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage('assets/images/img_bg_image.png'),),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 200),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text('Waqas Cafee',style: headingStyle8,),
+            ),
+          ],
+        ),
       ),
     );
   }

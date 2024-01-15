@@ -34,3 +34,16 @@ final TextStyle headingStyle6 = TextStyle(
   color: black,
   fontSize: 16,
 );
+
+final TextStyle headingStyle7 = TextStyle(
+  fontFamily: 'Poppins Medium',
+  color: btnTextColor,
+);
+
+final TextStyle headingStyle8 = TextStyle(
+  fontFamily: 'Poppins SemiBold',
+  color: btnColor,
+  fontSize: 18,
+  decoration: TextDecoration.none
+
+);

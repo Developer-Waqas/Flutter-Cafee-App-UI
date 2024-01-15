@@ -1,3 +1,4 @@
+import 'package:cafee_app/common_widgets/my_button/my_button.dart';
 import 'package:flutter/material.dart';
 import '../../common_widgets/textfield/textfield.dart';
 import '../../constants/app_color/app_color.dart';
@@ -41,7 +42,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
               Column(
                 children: [
                   Container(
-                    height: height * 0.15,
+                    height: height * 0.18,
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
@@ -70,15 +71,15 @@ class _RegistorScreenState extends State<RegistorScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
                     height: height * 0.85,
                     width: width,
-                    decoration: const BoxDecoration(
-                      color: Colors.white60,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: bgColor2,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
                       ),
@@ -143,12 +144,15 @@ class _RegistorScreenState extends State<RegistorScreen> {
                           ),
                           CustomTextField(
                             hintText: 'Enter Password',
-                            suffixIcon: InkWell(
-                              onTap: _togglePasswordView,
-                              child: Icon(
-                                isHidden
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
+                            suffixIcon: Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: InkWell(
+                                onTap: _togglePasswordView,
+                                child: Icon(
+                                  isHidden
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
                               ),
                             ),
                             obscureText: isHidden,
@@ -167,6 +171,14 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   style: headingStyle3), //Text
                             ],
                           ),
+                          const SizedBox(height: 10,),
+                          MyButton(
+                            title: 'SignUp',
+                            width: MediaQuery.of(context).size.width,
+                            height: 66,
+                            color: btnColor,
+                            onTap: (){},
+                          )
                         ],
                       ),
                     ),
