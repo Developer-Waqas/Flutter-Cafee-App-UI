@@ -48,3 +48,7 @@ final TextStyle headingStyle8 = TextStyle(
   decoration: TextDecoration.none
 
 );
+
+final TextStyle errorTextStyle = TextStyle(
+    fontFamily: 'Poppins Light',
+);

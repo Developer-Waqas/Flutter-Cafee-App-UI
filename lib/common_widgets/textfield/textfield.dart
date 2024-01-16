@@ -10,12 +10,14 @@ class CustomTextField extends StatelessWidget {
   TextEditingController? controller;
   Widget? suffixIcon;
   bool obscureText ;
+  String? Function(String?)? onValidate;
 
   CustomTextField({super.key,
     this.hintText,
     this.controller,
     this.suffixIcon,
     this.obscureText=false,
+    this.onValidate,
   });
 
   @override
@@ -29,6 +31,7 @@ class CustomTextField extends StatelessWidget {
         style: headingStyle6,
         obscureText: obscureText,
         decoration: InputDecoration(
+          errorStyle: errorTextStyle,
             hintText: hintText,
             hintStyle: headingStyle5,
             border: OutlineInputBorder(
@@ -45,6 +48,7 @@ class CustomTextField extends StatelessWidget {
           filled: true,
           suffixIcon: suffixIcon,
         ),
+        validator: onValidate,
       ),
     );
   }
