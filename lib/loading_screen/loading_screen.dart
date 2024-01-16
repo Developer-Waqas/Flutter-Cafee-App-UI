@@ -31,10 +31,10 @@ class LoadingScreen extends StatelessWidget {
               },
               size: 70,
             ),
-            Text(
-              'Loading...',
-              style: headingStyle3,
-            ),
+            // Text(
+            //   'Loading...',
+            //   style: headingStyle3,
+            // ),
           ],
         ),
       ),
