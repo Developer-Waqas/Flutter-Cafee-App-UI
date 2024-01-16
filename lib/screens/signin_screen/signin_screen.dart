@@ -1,5 +1,4 @@
 import 'package:cafee_app/common_widgets/my_button/my_button.dart';
-import 'package:cafee_app/loading_screen/loading_screen.dart';
 import 'package:cafee_app/utilities/routes/routes_name/routes_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import '../../common_widgets/my_button/my_button2.dart';
 import '../../common_widgets/textfield/textfield.dart';
 import '../../constants/app_color/app_color.dart';
 import '../../constants/app_style/app_style.dart';
+import '../loading_screen/loading_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({
