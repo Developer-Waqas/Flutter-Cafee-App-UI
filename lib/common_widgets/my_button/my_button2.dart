@@ -1,24 +1,24 @@
 import 'package:cafee_app/constants/app_color/app_color.dart';
-import 'package:cafee_app/constants/app_style/app_style.dart';
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget {
+class MyButton2 extends StatelessWidget {
   double? height;
   double? width;
   Color? color;
   String? title;
   void Function()? onTap;
-   MyButton({super.key,
+  MyButton2({super.key,
     this.width,
     this.height,
     this.color,
-     this.title,
-     required this.onTap,
+    this.title,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+
       onTap: onTap,
       child: Container(
         height: height,
@@ -29,7 +29,10 @@ class MyButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(title.toString(),
-          style: headingStyle7,
+            style: TextStyle(
+              fontFamily: 'Poppins SemiBold',
+              color: btnColor,
+            ),
           ),
         ),
       ),

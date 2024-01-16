@@ -4,7 +4,8 @@ import '../app_color/app_color.dart';
 
 final TextStyle headingStyle1 = TextStyle(
   fontFamily: 'Poppins Medium',
-  color: text1Color,
+  color: btnColor,
+  fontSize: 18,
 );
 
 final TextStyle headingStyle2 = TextStyle(
@@ -43,7 +44,7 @@ final TextStyle headingStyle7 = TextStyle(
 final TextStyle headingStyle8 = TextStyle(
   fontFamily: 'Poppins SemiBold',
   color: btnColor,
-  fontSize: 18,
+  fontSize: 20,
   decoration: TextDecoration.none
 
 );

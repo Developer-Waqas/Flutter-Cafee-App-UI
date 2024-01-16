@@ -9,4 +9,5 @@ Color hintTextColor = const Color(0xff989898);
 Color black = Colors.black;
 Color btnTextColor = Color(0xffF6F2ED);
 Color bgColor2 = Color(0xffFAFAFA);
+Color greyColor = Colors.grey;
 

@@ -11,12 +11,18 @@ class CustomTextField extends StatelessWidget {
   Widget? suffixIcon;
   bool obscureText ;
 
-  CustomTextField({super.key, this.hintText,this.controller,this.suffixIcon,this.obscureText=false});
+  CustomTextField({super.key,
+    this.hintText,
+    this.controller,
+    this.suffixIcon,
+    this.obscureText=false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: TextFormField(
+        cursorColor: hintTextColor,
         controller: controller,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         keyboardType: TextInputType.name,
@@ -30,7 +36,7 @@ class CustomTextField extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(22),
-              borderSide: BorderSide(color: white)
+              borderSide: BorderSide(color: black)
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(22),

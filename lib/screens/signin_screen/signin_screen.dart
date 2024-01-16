@@ -8,22 +8,16 @@ import '../../common_widgets/textfield/textfield.dart';
 import '../../constants/app_color/app_color.dart';
 import '../../constants/app_style/app_style.dart';
 
-class RegistorScreen extends StatefulWidget {
-  const RegistorScreen({
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({
     super.key,
   });
 
   @override
-  State<RegistorScreen> createState() => _RegistorScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _RegistorScreenState extends State<RegistorScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-
-
-
+class _SignInScreenState extends State<SignInScreen> {
   var height, width;
   bool value = false;
 
@@ -87,14 +81,14 @@ class _RegistorScreenState extends State<RegistorScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Sign Up',
+                                  'Sign In',
                                   style: headingStyle2,
                                 ),
                                 const SizedBox(
                                   height: 8,
                                 ),
                                 Text(
-                                  'We are so excited you’re ready to \nbecome apart of our coffee network! \ndon’t forget  check out your perks!',
+                                  'It’s coffee time! Login and lets get all the\ncoffee in the world! Or at least iced\ncoffee. ',
                                   style: headingStyle3,
                                 ),
                                 const SizedBox(
@@ -110,8 +104,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 5,
                                 ),
                                 CustomTextField(
-                                  controller: nameController,
-                                  hintText: 'Type Name',
+                                  hintText: 'Enter Name',
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -126,8 +119,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 5,
                                 ),
                                 CustomTextField(
-                                  controller: nameController,
-                                  hintText: 'Type Email',
+                                  hintText: 'Enter Email',
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -142,72 +134,72 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 5,
                                 ),
                                 CustomTextField(
-                                  controller: nameController,
-                                  hintText: 'Type Password',
+                                  hintText: 'Enter Password',
                                   suffixIcon: Padding(
                                     padding: const EdgeInsets.only(right: 10),
                                     child: InkWell(
                                       onTap: _togglePasswordView,
-                                      child: Icon(
-                                        isHidden
-                                            ? CupertinoIcons.eye
-                                            : CupertinoIcons.eye_slash,
-                                      ),
+                                      child: Icon(isHidden
+                                          ? CupertinoIcons.eye
+                                          : CupertinoIcons.eye_slash),
                                     ),
                                   ),
                                   obscureText: isHidden,
                                 ),
-                                Row(
-                                  children: [
-                                    Checkbox(
-                                        activeColor: btnColor,
-                                        value: value,
-                                        onChanged: (bool? value) {
-                                          setState(() {
-                                            this.value = value!;
-                                          });
-                                        }),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      ' Get updates of new foods & drinks ',
-                                      style: headingStyle3,
-                                    ), //Text
-                                  ],
-                                ),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 5,
                                 ),
 
-                                ///SignUp Button===============
+                                ///forgot password==========
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    InkWell(
+                                      onTap: (){},
+                                      child: Text(
+                                        'Forgot Password?',
+                                        style: headingStyle3,
+
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                const SizedBox(height: 20,),
+
+                                ///signIn button===========
                                 MyButton(
-                                  title: 'SignUp',
+                                  title: 'SignIn',
                                   width: MediaQuery.of(context).size.width,
                                   height: 66,
                                   color: btnColor,
                                   onTap: () async {
-
-                                      setState(() {
-                                        _isLoading = true;
-                                      });
-                                      await Future.delayed(const Duration(seconds: 3));
-                                      setState(() {
-                                        _isLoading = false;
-                                        Navigator.pushNamedAndRemoveUntil(context, RoutesName.mainScreen, (route) => false);
-                                      });
-
+                                    setState(() {
+                                      _isLoading = true;
+                                    });
+                                    await Future.delayed(
+                                        const Duration(seconds: 3));
+                                    setState(() {
+                                      _isLoading = false;
+                                      Navigator.pushNamedAndRemoveUntil(
+                                          context,
+                                          RoutesName.mainScreen,
+                                          (route) => false);
+                                    });
                                   },
                                 ),
+
                                 const SizedBox(
                                   height: 8,
                                 ),
+
+                                ///already account button=========
                                 Padding(
                                   padding: const EdgeInsets.only(left: 33),
                                   child: Row(
                                     children: [
                                       Text(
-                                        'Already have an Account?',
+                                        'Don\'t have an Account?',
                                         style: headingStyle3,
                                       ),
                                       const SizedBox(
@@ -216,11 +208,12 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                       MyButton2(
                                         onTap: () {
                                           Navigator.pushNamedAndRemoveUntil(
-                                              context,
-                                              RoutesName.signInScreen,
-                                              (route) => false);
+                                            context,
+                                            RoutesName.registorScreen,
+                                            (route) => false,
+                                          );
                                         },
-                                        title: 'SignIn',
+                                        title: 'SignUp',
                                       ),
                                     ],
                                   ),
