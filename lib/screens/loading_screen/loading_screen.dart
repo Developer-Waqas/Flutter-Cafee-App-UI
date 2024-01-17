@@ -1,4 +1,5 @@
 import 'package:cafee_app/constants/app_color/app_color.dart';
+import 'package:cafee_app/constants/app_style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -30,10 +31,11 @@ class LoadingScreen extends StatelessWidget {
               },
               size: 70,
             ),
-            // Text(
-            //   'Loading...',
-            //   style: headingStyle3,
-            // ),
+            const SizedBox(height: 5,),
+            Text(
+              'Loading...',
+              style: headingStyle3,
+            ),
           ],
         ),
       ),

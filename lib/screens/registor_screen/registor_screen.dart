@@ -20,7 +20,9 @@ class RegistorScreen extends StatefulWidget {
 class _RegistorScreenState extends State<RegistorScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   _signInForm() async {
@@ -31,7 +33,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
       await Future.delayed(const Duration(seconds: 3));
       setState(() {
         _isLoading = false;
-        Navigator.pushNamedAndRemoveUntil(context, RoutesName.mainScreen, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, RoutesName.pinCodeScreen, (route) => false);
       });
 
     }
@@ -79,7 +81,20 @@ class _RegistorScreenState extends State<RegistorScreen> {
     });
   }
 
+
+  ///hide Confirm Password
+  bool _isHidden = true;
+
+  void togglePasswordView() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
+
+  ///loading page variable====
+
   bool _isLoading = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +130,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                           height: 10,
                         ),
                         Container(
-                          height: height * 0.95,
+                          height: height * 1.2,
                           width: width,
                           decoration: BoxDecoration(
                             color: bgColor2,
@@ -137,7 +152,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 8,
                                 ),
                                 Text(
-                                  'We are so excited you’re ready to \nbecome apart of our coffee network! \ndon’t forget  check out your perks!',
+                                  'We are so excited you’re ready to become apart of our coffee network! don’t forget  check out your perks!',
                                   style: headingStyle3,
                                 ),
                                 const SizedBox(
@@ -152,7 +167,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Name',
+                                        'First Name',
                                         style: headingStyle4,
                                       ),
 
@@ -160,17 +175,17 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 5,
                                 ),
                                 CustomTextField(
-                                  controller: nameController,
-                                  hintText: 'Type Name',
+                                  controller: firstNameController,
+                                  hintText: 'First Name',
                                   onValidate: (value){
                                     if(value!.isEmpty){
-                                      return 'Please enter name';
+                                      return 'Please enter first name';
                                     }
                                     else if(value.length <3) {
                                       return 'Name should be contain 3 characters';
                                     }
-                                    else if(value.length >20){
-                                      return 'Name should be less than 20 characters';
+                                    else if(value.length >10){
+                                      return 'Name should be less than 10 characters';
                                     }
                                     return null;
                                   },
@@ -178,6 +193,36 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                 const SizedBox(
                                   height: 10,
                                 ),
+
+
+                                      ///last name================
+                                      Text(
+                                        'Last Name',
+                                        style: headingStyle4,
+                                      ),
+
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      CustomTextField(
+                                        controller: lastNameController,
+                                        hintText: 'Last Name',
+                                        onValidate: (value){
+                                          if(value!.isEmpty){
+                                            return 'Please enter last name';
+                                          }
+                                          else if(value.length <3) {
+                                            return 'Name should be contain 3 characters';
+                                          }
+                                          else if(value.length >10){
+                                            return 'Name should be less than 10 characters';
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
 
                                 ///email field=============
                                 Text(
@@ -189,19 +234,8 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                 ),
                                 CustomTextField(
                                   controller: emailController,
-                                  hintText: 'Type Email',
-                                  onValidate: (value){
-                                    if(value!.isEmpty){
-                                      return 'Please enter name';
-                                    }
-                                    else if(value.length <3) {
-                                      return 'Name should be contain 3 characters';
-                                    }
-                                    else if(value.length >20){
-                                      return 'Name should be less than 20 characters';
-                                    }
-                                    return null;
-                                  },
+                                  hintText: 'Email',
+                                  onValidate: validateEmail,
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -217,7 +251,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                 ),
                                 CustomTextField(
                                   controller: passwordController,
-                                  hintText: 'Type Password',
+                                  hintText: 'Password',
                                   suffixIcon: Padding(
                                     padding: const EdgeInsets.only(right: 10),
                                     child: InkWell(
@@ -251,6 +285,54 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                     }
                                   },
                                 ),
+                                      SizedBox(height: 10,),
+
+
+                                      ///password field===============
+                                      Text(
+                                        'Confirm Password',
+                                        style: headingStyle4,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      CustomTextField(
+                                        controller: confirmPasswordController,
+                                        hintText: 'Confirm Password',
+                                        suffixIcon: Padding(
+                                          padding: const EdgeInsets.only(right: 10),
+                                          child: InkWell(
+                                            onTap: _togglePasswordView,
+                                            child: Icon(
+                                              isHidden
+                                                  ? CupertinoIcons.eye
+                                                  : CupertinoIcons.eye_slash,
+                                            ),
+                                          ),
+                                        ),
+                                        obscureText: isHidden,
+                                        onValidate: (value){
+                                          if(value!.isEmpty){
+                                            return 'Please enter Confirm Password';
+                                          }
+                                          else if(value.length <3) {
+                                            return 'Confirm Password should contain 6 characters';
+                                          }
+                                          else if(value.length >20){
+                                            return 'Confirm Password should less than 15 characters';
+                                          }
+                                          else {
+                                            bool result = validatePassword(value);
+                                            if(result){
+                                              return null;
+                                            }
+                                            else {
+                                              return 'Confirm Password should contain atleast One Number';
+                                            }
+                                          }
+                                        },
+                                      )
+
                                     ],
                                   ),
                           ),
@@ -306,48 +388,10 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                               RoutesName.signInScreen,
                                               (route) => false);
                                         },
-                                        title: 'SignIn',
+                                        title: 'Login',
                                       ),
                                     ],
                                   ),
-                                ),
-                                Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Center(
-                                      child: Container(
-                                        height: 32,
-                                        width: 90,
-                                        decoration: BoxDecoration(
-                                          color: white,
-                                          border: Border.all(color: black),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Center(
-                                              child: Text(
-                                                'skip',
-                                                style: headingStyle1,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 2,
-                                            ),
-                                            const Icon(
-                                              CupertinoIcons.arrow_right,
-                                              size: 20,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               ],
                             ),
