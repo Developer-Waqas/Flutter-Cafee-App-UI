@@ -31,13 +31,16 @@ class _RegistorScreenState extends State<RegistorScreen> {
       setState(() {
         _isLoading = true;
       });
+
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.setString('firstName', firstNameController.text.toString());
+      sp.setString('lastName', lastNameController.text.toString());
+      sp.setString('password', passwordController.text.toString());
+      sp.setString('confirmPassword', confirmPasswordController.text.toString());
+      sp.setBool('isSignUp', true);
+
       await Future.delayed(const Duration(seconds: 3));
       setState(() {
-
-// Future<SharedPreferences> sp = SharedPreferences.getInstance();
-
-
-
         _isLoading = false;
         Navigator.pushNamedAndRemoveUntil(context, RoutesName.pinCodeScreen, (route) => false);
       });
@@ -188,10 +191,10 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                       return 'Please enter first name';
                                     }
                                     else if(value.length <3) {
-                                      return 'Name should be contain 3 characters';
+                                      return 'First Name should be contain 3 characters';
                                     }
                                     else if(value.length >10){
-                                      return 'Name should be less than 10 characters';
+                                      return 'First Name should be less than 10 characters';
                                     }
                                     return null;
                                   },

@@ -31,7 +31,7 @@ class _ResetScreenState extends State<ResetScreen> {
       setState(() {
         _isLoading = false;
         Navigator.pushNamedAndRemoveUntil(
-            context, RoutesName.mainScreen, (route) => false);
+            context, RoutesName.signInScreen, (route) => false);
       });
     }
   }

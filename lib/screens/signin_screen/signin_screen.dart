@@ -2,6 +2,7 @@ import 'package:cafee_app/common_widgets/my_button/my_button.dart';
 import 'package:cafee_app/utilities/routes/routes_name/routes_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../common_widgets/my_button/my_button2.dart';
 import '../../common_widgets/textfield/textfield.dart';
 import '../../constants/app_color/app_color.dart';
@@ -28,6 +29,12 @@ class _SignInScreenState extends State<SignInScreen> {
       setState(() {
         _isLoading = true;
       });
+
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.setString('name', nameController.text.toString());
+      sp.setString('password', passwordController.text.toString());
+      sp.setBool('isLogin', true);
+
       await Future.delayed(const Duration(seconds: 3));
       setState(() {
         _isLoading = false;
@@ -151,6 +158,34 @@ class _SignInScreenState extends State<SignInScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  'First Name',
+                                  style: headingStyle4,
+                                ),
+
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                CustomTextField(
+                                  controller: nameController,
+                                  hintText: 'Name',
+                                  onValidate: (value){
+                                    if(value!.isEmpty){
+                                      return 'Please enter name';
+                                    }
+                                    else if(value.length <3) {
+                                      return 'Name should be contain 3 characters';
+                                    }
+                                    else if(value.length >20){
+                                      return 'Name should be less than 20 characters';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+
                                 ///email field=============
                                 Text(
                                   'Email',
