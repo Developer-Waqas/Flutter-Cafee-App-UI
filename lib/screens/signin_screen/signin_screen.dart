@@ -31,7 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
       await Future.delayed(const Duration(seconds: 3));
       setState(() {
         _isLoading = false;
-        Navigator.pushNamedAndRemoveUntil(context, RoutesName.pinCodeScreen2, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, RoutesName.mainScreen, (route) => false);
       });
 
     }
@@ -224,7 +224,9 @@ class _SignInScreenState extends State<SignInScreen> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               InkWell(
-                                onTap: (){},
+                                onTap: (){
+                                  Navigator.pushNamedAndRemoveUntil(context, RoutesName.forgotPassword, (route) => false);
+                                },
                                 child: Text(
                                   'Forgot Password?',
                                   style: headingStyle3,

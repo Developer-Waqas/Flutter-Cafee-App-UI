@@ -24,6 +24,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: TextFormField(
+
         cursorColor: hintTextColor,
         controller: controller,
         autovalidateMode: AutovalidateMode.onUserInteraction,

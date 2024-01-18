@@ -2,6 +2,7 @@ import 'package:cafee_app/common_widgets/my_button/my_button.dart';
 import 'package:cafee_app/utilities/routes/routes_name/routes_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../common_widgets/my_button/my_button2.dart';
 import '../../common_widgets/textfield/textfield.dart';
 import '../../constants/app_color/app_color.dart';
@@ -32,6 +33,11 @@ class _RegistorScreenState extends State<RegistorScreen> {
       });
       await Future.delayed(const Duration(seconds: 3));
       setState(() {
+
+// Future<SharedPreferences> sp = SharedPreferences.getInstance();
+
+
+
         _isLoading = false;
         Navigator.pushNamedAndRemoveUntil(context, RoutesName.pinCodeScreen, (route) => false);
       });
@@ -288,7 +294,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                       SizedBox(height: 10,),
 
 
-                                      ///password field===============
+                                      ///Confirm password field===============
                                       Text(
                                         'Confirm Password',
                                         style: headingStyle4,
@@ -302,15 +308,15 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                         suffixIcon: Padding(
                                           padding: const EdgeInsets.only(right: 10),
                                           child: InkWell(
-                                            onTap: _togglePasswordView,
+                                            onTap: togglePasswordView,
                                             child: Icon(
-                                              isHidden
+                                              _isHidden
                                                   ? CupertinoIcons.eye
                                                   : CupertinoIcons.eye_slash,
                                             ),
                                           ),
                                         ),
-                                        obscureText: isHidden,
+                                        obscureText: _isHidden,
                                         onValidate: (value){
                                           if(value!.isEmpty){
                                             return 'Please enter Confirm Password';
@@ -320,6 +326,8 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                           }
                                           else if(value.length >20){
                                             return 'Confirm Password should less than 15 characters';
+                                          } else if(passwordController.text != confirmPasswordController.text){
+                                            return 'Password does\'t match';
                                           }
                                           else {
                                             bool result = validatePassword(value);

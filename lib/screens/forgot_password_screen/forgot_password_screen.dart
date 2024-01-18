@@ -1,41 +1,57 @@
 import 'package:cafee_app/common_widgets/my_button/my_button.dart';
 import 'package:cafee_app/utilities/routes/routes_name/routes_name.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../common_widgets/my_button/my_button2.dart';
+import '../../common_widgets/textfield/textfield.dart';
 import '../../constants/app_color/app_color.dart';
 import '../../constants/app_style/app_style.dart';
-import '../../screens/loading_screen/loading_screen.dart';
+import '../loading_screen/loading_screen.dart';
 
-class PinCodeScreen2 extends StatefulWidget {
-  String? Function(String?)? onValidate;
-  PinCodeScreen2({
+class ForgotSreen extends StatefulWidget {
+  const ForgotSreen({
     super.key,
-    this.onValidate,
   });
 
   @override
-  State<PinCodeScreen2> createState() => _PinCodeScreen2State();
+  State<ForgotSreen> createState() => _ForgotScreenState();
 }
 
-class _PinCodeScreen2State extends State<PinCodeScreen2> {
+class _ForgotScreenState extends State<ForgotSreen> {
+  TextEditingController emailController = TextEditingController();
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  _pinCode2Form() async {
-    if (formKey.currentState!.validate()) {
+  _forgotForm() async {
+    if(formKey.currentState!.validate()){
       setState(() {
         _isLoading = true;
       });
       await Future.delayed(const Duration(seconds: 3));
       setState(() {
         _isLoading = false;
-        Navigator.pushNamedAndRemoveUntil(
-            context, RoutesName.resetScreen, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, RoutesName.pinCodeScreen2, (route) => false);
       });
+
     }
   }
 
+
   var height, width;
   bool value = false;
+
+  ///email=======
+
+  String? validateEmail (value) {
+    RegExp emailValid = RegExp(
+        r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+    );
+    if (!emailValid.hasMatch(value)){
+      return 'Please enter valid Email';
+    }
+    return null;
+  }
+
+ ///for loading page============
 
   bool _isLoading = false;
 
@@ -88,71 +104,56 @@ class _PinCodeScreen2State extends State<PinCodeScreen2> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Reset Password Verification Code',
+                            'Forgot Password?',
                             style: headingStyle2,
                           ),
                           const SizedBox(
                             height: 8,
                           ),
                           Text(
-                            'Please enter any four/4 digits code to reset your account password',
+                            'Don\'t worry, Enter your email & reset your password!',
                             style: headingStyle3,
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Form(
-                            key: formKey,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Center(
-                                  child: PinCodeTextField(
-                                    appContext: context,
-                                    length: 4,
-                                    keyboardType: TextInputType.number,
-                                    cursorColor: hintTextColor,
-                                    textStyle: TextStyle(
-                                      fontFamily: 'Poppins Light',
-                                      color: hintTextColor,
-                                    ),
-                                    pinTheme: PinTheme(
-                                      borderRadius: BorderRadius.circular(12),
-                                      shape: PinCodeFieldShape.box,
-                                    ),
-                                    validator: (value){
-                                      if(value!.isEmpty){
-                                        return 'Please enter PinCode first!';
-                                      }
-                                      else if(value.length < 4){
-                                        return 'Please fill all the boxes';
-                                      }
-                                      else {
-                                        return null;
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
                           ),
                           const SizedBox(
                             height: 20,
                           ),
 
-                          /// Button===============
-                          Center(
-                            child: MyButton(
-                              title: 'Reset Password',
-                              width: MediaQuery.of(context).size.width,
-                              height: 66,
-                              color: btnColor,
-                              onTap: _pinCode2Form,
-                            ),
+                          ///name field==============
+                          Form(
+                            key: formKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ///email field=============
+                                Text(
+                                  'Email',
+                                  style: headingStyle4,
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                CustomTextField(
+                                  controller: emailController,
+                                  hintText: 'Email',
+                                  onValidate: validateEmail,
+                                ),
+                                const SizedBox(
+                                  height: 40,
+                                ),
+                          ///SignUp Button===============
+                          MyButton(
+                            title: 'Next',
+                            width: MediaQuery.of(context).size.width,
+                            height: 66,
+                            color: btnColor,
+                            onTap: _forgotForm,
                           ),
                           const SizedBox(
                             height: 8,
+                          ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -167,3 +168,4 @@ class _PinCodeScreen2State extends State<PinCodeScreen2> {
     );
   }
 }
+
