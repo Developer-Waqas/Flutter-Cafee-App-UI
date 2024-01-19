@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     else {
       Timer(const Duration(seconds: 3), () {
-        Navigator.pushNamedAndRemoveUntil(context, RoutesName.registorScreen, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, RoutesName.signInScreen, (route) => false);
       });
     }
   }

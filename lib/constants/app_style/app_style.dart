@@ -52,3 +52,17 @@ final TextStyle headingStyle8 = TextStyle(
 final TextStyle errorTextStyle = TextStyle(
     fontFamily: 'Poppins Light',
 );
+
+final TextStyle headingStyle9 = TextStyle(
+  fontFamily: 'Poppins Bold',
+);
+
+final TextStyle headingStyle10 = TextStyle(
+  fontFamily: 'Poppins Bold',
+  fontSize: 30
+);
+
+final TextStyle headingStyle11 = TextStyle(
+    fontFamily: 'Poppins Regular',
+  fontSize: 12,
+);

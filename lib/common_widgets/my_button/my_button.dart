@@ -26,6 +26,13 @@ class MyButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
           color: color,
+          boxShadow: [
+            BoxShadow(
+            color: greyColor,
+            blurRadius: 2,
+            offset: Offset(3.0, 3.0)
+            ),
+          ],
         ),
         child: Center(
           child: Text(title.toString(),
