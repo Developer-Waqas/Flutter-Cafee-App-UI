@@ -22,7 +22,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -33,8 +33,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
       });
 
       SharedPreferences sp = await SharedPreferences.getInstance();
-      sp.setString('firstName', firstNameController.text.toString());
-      sp.setString('lastName', lastNameController.text.toString());
+      sp.setString('name', nameController.text.toString());
       sp.setString('password', passwordController.text.toString());
       sp.setString('confirmPassword', confirmPasswordController.text.toString());
       sp.setBool('isSignUp', true);
@@ -184,17 +183,17 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 5,
                                 ),
                                 CustomTextField(
-                                  controller: firstNameController,
-                                  hintText: 'First Name',
+                                  controller: nameController,
+                                  hintText: 'Name',
                                   onValidate: (value){
                                     if(value!.isEmpty){
                                       return 'Please enter first name';
                                     }
                                     else if(value.length <3) {
-                                      return 'First Name should be contain 3 characters';
+                                      return 'Name should be contain 3 characters';
                                     }
                                     else if(value.length >10){
-                                      return 'First Name should be less than 10 characters';
+                                      return 'Name should be less than 10 characters';
                                     }
                                     return null;
                                   },
@@ -202,37 +201,6 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-
-
-                                      ///last name================
-                                      Text(
-                                        'Last Name',
-                                        style: headingStyle4,
-                                      ),
-
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      CustomTextField(
-                                        controller: lastNameController,
-                                        hintText: 'Last Name',
-                                        onValidate: (value){
-                                          if(value!.isEmpty){
-                                            return 'Please enter last name';
-                                          }
-                                          else if(value.length <3) {
-                                            return 'Name should be contain 3 characters';
-                                          }
-                                          else if(value.length >10){
-                                            return 'Name should be less than 10 characters';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-
                                 ///email field=============
                                 Text(
                                   'Email',

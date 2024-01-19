@@ -13,8 +13,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  String firstName = '';
-  String lastName = '';
   String email = '';
   String name = '';
 
@@ -48,9 +46,6 @@ class _MainScreenState extends State<MainScreen> {
 
   void loadData() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-
-    firstName = sp.getString('firstName') ?? '';
-    lastName = sp.getString('lastName') ?? '';
     email = sp.getString('email') ?? '';
     name = sp.getString('name') ?? '';
     setState(() {});
