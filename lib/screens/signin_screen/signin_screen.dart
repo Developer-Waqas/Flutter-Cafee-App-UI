@@ -159,7 +159,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'First Name',
+                                  'Name',
                                   style: headingStyle4,
                                 ),
 
@@ -213,7 +213,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                                 CustomTextField(
                                   controller: passwordController,
-                                  hintText: 'Type Password',
+                                  hintText: 'Password',
                                   suffixIcon: Padding(
                                     padding: const EdgeInsets.only(right: 10),
                                     child: InkWell(
