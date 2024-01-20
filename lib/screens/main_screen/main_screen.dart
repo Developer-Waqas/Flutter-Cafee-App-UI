@@ -39,6 +39,8 @@ class _MainScreenState extends State<MainScreen> {
     'Cold Drink'
   ];
 
+  int currentPageIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -151,23 +153,34 @@ class _MainScreenState extends State<MainScreen> {
       ),
       backgroundColor: btnTextColor,
       bottomNavigationBar: NavigationBar(
-        backgroundColor: white,
-        destinations: const [
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        indicatorColor: bgColor2,
+        backgroundColor: btnTextColor,
+        selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
           NavigationDestination(
-            icon: Icon(CupertinoIcons.home),
+            selectedIcon: Icon(CupertinoIcons.home),
+            icon: Icon(CupertinoIcons.house_fill),
             label: 'Home',
           ),
           NavigationDestination(
+            selectedIcon: Icon(CupertinoIcons.qrcode),
             icon: Icon(CupertinoIcons.qrcode_viewfinder),
             label: 'Scan/Pay',
           ),
           NavigationDestination(
-            icon: Icon(CupertinoIcons.heart),
+            selectedIcon: Icon(CupertinoIcons.heart),
+            icon: Icon(CupertinoIcons.heart_fill),
             label: 'Favourites',
           ),
           NavigationDestination(
-            icon: Icon(CupertinoIcons.profile_circled),
-            label: 'Account',
+            selectedIcon: Icon(CupertinoIcons.profile_circled),
+            icon: Icon(CupertinoIcons.person),
+            label: 'Accounts',
           ),
         ],
       ),
