@@ -1,6 +1,7 @@
 import 'package:cafee_app/common_widgets/my_button/my_button.dart';
 import 'package:cafee_app/constants/app_color/app_color.dart';
 import 'package:cafee_app/constants/app_style/app_style.dart';
+import 'package:cafee_app/utilities/routes/routes_name/routes_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -57,12 +58,12 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         backgroundColor: btnTextColor,
         actions: [
-           Padding(
-            padding: EdgeInsets.only(right: 15),
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
             child: Badge(
-              backgroundColor: textFieldHeadingColor,
-                 label: Text('3'),
-                child: Icon(CupertinoIcons.shopping_cart)),
+                backgroundColor: textFieldHeadingColor,
+                label: const Text('3'),
+                child: const Icon(CupertinoIcons.shopping_cart)),
           ),
         ],
         title: const Image(
@@ -72,19 +73,102 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         centerTitle: true,
-        leading: Icon(CupertinoIcons.bars,size: 28,),
+      ),
+      drawer: Drawer(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  name.toString(),
+                  style: TextStyle(
+                    fontFamily: 'Poppins Bold',
+                    color: text1Color,
+                  ),
+                ),
+                accountEmail: Text(
+                  email.toString(),
+                  style: TextStyle(
+                    fontFamily: 'Poppins Light',
+                    color: text1Color,
+                  ),
+                ),
+                decoration: BoxDecoration(
+                    color: bgColor2,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(12),
+                      topLeft: Radius.circular(12),
+                    )),
+                currentAccountPicture: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/img_profile.png'),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ListTile(
+                leading: const Icon(CupertinoIcons.person),
+                title: const Text('Profile'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(CupertinoIcons.star),
+                title: const Text('Rewards'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(CupertinoIcons.shopping_cart),
+                title: const Text('Cart'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout_outlined),
+                title: const Text('Logout'),
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RoutesName.signInScreen,
+                    (route) => false,
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(CupertinoIcons.settings),
+                title: const Text('Settings'),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
       ),
       backgroundColor: btnTextColor,
       bottomNavigationBar: NavigationBar(
         backgroundColor: white,
         destinations: const [
-          NavigationDestination(icon: Icon(CupertinoIcons.home), label: 'Home'),
           NavigationDestination(
-              icon: Icon(CupertinoIcons.qrcode_viewfinder), label: 'Scan/Pay'),
+            icon: Icon(CupertinoIcons.home),
+            label: 'Home',
+          ),
           NavigationDestination(
-              icon: Icon(CupertinoIcons.star), label: 'Rewards'),
+            icon: Icon(CupertinoIcons.qrcode_viewfinder),
+            label: 'Scan/Pay',
+          ),
           NavigationDestination(
-              icon: Icon(CupertinoIcons.person), label: 'Account'),
+            icon: Icon(CupertinoIcons.heart),
+            label: 'Favourites',
+          ),
+          NavigationDestination(
+            icon: Icon(CupertinoIcons.profile_circled),
+            label: 'Account',
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -103,8 +187,20 @@ class _MainScreenState extends State<MainScreen> {
                     'Good Morning!',
                     style: headingStyle9,
                   ),
-                  SizedBox(width: 5,),
-                  Text(name.toString(),style: headingStyle9,)
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    name.toString(),
+                    style: headingStyle9,
+                  ),
+                  const SizedBox(width: 138,),
+                  const Image(
+                    height: 50,
+                    image: AssetImage(
+                      'assets/images/img_profile.png',
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -123,7 +219,7 @@ class _MainScreenState extends State<MainScreen> {
                     BoxShadow(
                         color: greyColor,
                         blurRadius: 2,
-                        offset: Offset(3.0, 3.0)),
+                        offset: const Offset(3.0, 3.0)),
                   ],
                 ),
                 child: Padding(
@@ -132,7 +228,7 @@ class _MainScreenState extends State<MainScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -142,7 +238,7 @@ class _MainScreenState extends State<MainScreen> {
                             fontSize: 10,
                             color: white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -152,7 +248,7 @@ class _MainScreenState extends State<MainScreen> {
                             fontSize: 16,
                             color: white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -162,7 +258,7 @@ class _MainScreenState extends State<MainScreen> {
                             fontSize: 12,
                             color: white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -190,7 +286,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Padding(
@@ -211,24 +307,23 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             GridView.count(
               crossAxisCount: 3,
-              childAspectRatio: 150 / 195,
+              childAspectRatio: 150 / 170,
               shrinkWrap: true,
               children: [
                 for (int i = 0; i < img.length; i++)
                   ListView(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     children: [
                       Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        margin:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 13),
+                        margin: const EdgeInsets.symmetric(horizontal: 1),
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                         decoration: BoxDecoration(
-                          color: Color(0xffF9F9F9),
+                          color: const Color(0xffF9F9F9),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
@@ -236,7 +331,7 @@ class _MainScreenState extends State<MainScreen> {
                             InkWell(
                               onTap: () {},
                               child: Container(
-                                margin: EdgeInsets.all(10),
+                                margin: const EdgeInsets.all(10),
                                 child: Image.asset(
                                   "assets/images/${img[i]}.png",
                                   width: 100,
@@ -246,12 +341,15 @@ class _MainScreenState extends State<MainScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                 bottom: 8,
                               ),
                               child: Container(
                                 alignment: Alignment.centerLeft,
-                                child: Text(imgName[i].toString(),style: headingStyle11,),
+                                child: Text(
+                                  imgName[i].toString(),
+                                  style: headingStyle11,
+                                ),
                               ),
                             ),
                           ],
