@@ -194,13 +194,6 @@ class _MainScreenState extends State<MainScreen> {
                     name.toString(),
                     style: headingStyle9,
                   ),
-                  const SizedBox(width: 138,),
-                  const Image(
-                    height: 50,
-                    image: AssetImage(
-                      'assets/images/img_profile.png',
-                    ),
-                  ),
                 ],
               ),
             ),
