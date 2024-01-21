@@ -29,7 +29,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       setState(() {
         _isLoading = false;
         Navigator.pushNamedAndRemoveUntil(
-            context, RoutesName.homeScreen, (route) => false);
+            context, RoutesName.mainScreen, (route) => false);
       });
     }
   }

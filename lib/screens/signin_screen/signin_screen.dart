@@ -163,7 +163,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                         style: headingStyle4,
                                       ),
 
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       CustomTextField(
@@ -180,7 +180,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                           return null;
                                         },
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
 

@@ -127,7 +127,7 @@ class _MainScreenState extends State<MainScreen> {
 
               ///Navigation drawer list===============
               ListTile(
-                leading: const Icon(CupertinoIcons.person),
+                leading: const Icon(CupertinoIcons.profile_circled),
                 title: const Text('Profile'),
                 onTap: () {},
               ),
@@ -184,23 +184,28 @@ class _MainScreenState extends State<MainScreen> {
         },
         items: [
           BottomNavigationBarItem(
+            activeIcon: Icon(CupertinoIcons.house_fill),
             backgroundColor: white,
             icon: const Icon(CupertinoIcons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            activeIcon: Icon(CupertinoIcons.qrcode_viewfinder),
+
             backgroundColor: white,
-            icon: const Icon(CupertinoIcons.qrcode_viewfinder),
+            icon: const Icon(CupertinoIcons.qrcode),
             label: 'Scan/Pay',
           ),
           BottomNavigationBarItem(
+            activeIcon: Icon(CupertinoIcons.heart_fill),
             backgroundColor: white,
             icon: const Icon(CupertinoIcons.heart),
             label: 'Favourites',
           ),
           BottomNavigationBarItem(
+            activeIcon: Icon(CupertinoIcons.profile_circled),
             backgroundColor: white,
-            icon: const Icon(CupertinoIcons.profile_circled),
+            icon: const Icon(CupertinoIcons.person),
             label: 'Profile',
           ),
         ],
