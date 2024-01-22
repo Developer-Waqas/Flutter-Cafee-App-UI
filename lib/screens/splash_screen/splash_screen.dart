@@ -63,6 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 10,),
             Center(
               child: Text('Waqas Coffee Shop',style: headingStyle8,),
             ),

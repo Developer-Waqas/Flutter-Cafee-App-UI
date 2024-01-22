@@ -9,6 +9,7 @@ class RoutesName {
   static const forgotPassword = 'forgot_password_screen';
   static const pinCodeScreen2 = 'pin_code_screen2';
   static const resetScreen = 'reset_password_screen';
+  static const premiumScreen2 = 'premium_screen2';
 
 
 

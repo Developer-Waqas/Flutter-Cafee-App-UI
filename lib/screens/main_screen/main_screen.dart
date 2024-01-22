@@ -1,5 +1,5 @@
-import 'package:cafee_app/screens/favoruites_screen/favoruites_screen.dart';
 import 'package:cafee_app/screens/home_screen/home_screen.dart';
+import 'package:cafee_app/screens/premium_screen/premium_screen.dart';
 import 'package:cafee_app/screens/profile_screen/profile_screen.dart';
 import 'package:cafee_app/screens/scan_pay_screen/scan_pay_screen.dart';
 
@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   final screenList = [
     const HomeScreen(),
     const ScanPayScreen(),
-    const FavScreen(),
+    const PremiumScreen(),
     const ProfileScreen(),
   ];
 
@@ -132,13 +132,20 @@ class _MainScreenState extends State<MainScreen> {
                 onTap: () {},
               ),
               ListTile(
-                leading: const Icon(CupertinoIcons.star),
-                title: const Text('Rewards'),
+                leading: const Icon(Icons.workspace_premium),
+                title: const Text('Premium'),
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.premiumScreen2);
+                },
+              ),
+              ListTile(
+                leading: const Icon(CupertinoIcons.settings),
+                title: const Text('Settings'),
                 onTap: () {},
               ),
               ListTile(
-                leading: const Icon(Icons.workspace_premium),
-                title: const Text('Premium'),
+                leading: const Icon(CupertinoIcons.star),
+                title: const Text('Rewards'),
                 onTap: () {},
               ),
               ListTile(
@@ -148,11 +155,6 @@ class _MainScreenState extends State<MainScreen> {
                   Navigator.pushNamedAndRemoveUntil(
                       context, RoutesName.signInScreen, (route) => false);
                 },
-              ),
-              ListTile(
-                leading: const Icon(CupertinoIcons.settings),
-                title: const Text('Settings'),
-                onTap: () {},
               ),
               const SizedBox(
                 height: 20,
@@ -197,10 +199,10 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Scan/Pay',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(CupertinoIcons.heart_fill),
+            activeIcon: Icon(Icons.workspace_premium),
             backgroundColor: white,
-            icon: const Icon(CupertinoIcons.heart),
-            label: 'Favourites',
+            icon: const Icon(Icons.workspace_premium_rounded),
+            label: 'Premium',
           ),
           BottomNavigationBarItem(
             activeIcon: Icon(CupertinoIcons.profile_circled),
