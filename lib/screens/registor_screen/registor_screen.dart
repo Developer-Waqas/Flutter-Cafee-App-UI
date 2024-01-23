@@ -337,8 +337,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                             }
                                           }
                                         },
-                                      )
-
+                                      ),
                                     ],
                                   ),
                           ),

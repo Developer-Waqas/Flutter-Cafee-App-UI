@@ -4,6 +4,7 @@ import 'package:cafee_app/common_widgets/pin_code_field/pin_code_field2.dart';
 import 'package:cafee_app/screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:cafee_app/screens/home_screen/home_screen.dart';
 import 'package:cafee_app/screens/main_screen/main_screen.dart';
+import 'package:cafee_app/screens/personal_info_screen/personal_info_screen.dart';
 import 'package:cafee_app/screens/premium_screen/premium_screen2.dart';
 import 'package:cafee_app/screens/reset_password_screen/reset_password_screen.dart';
 import 'package:cafee_app/screens/signin_screen/signin_screen.dart';
@@ -37,6 +38,8 @@ class RoutesPaths {
         return MaterialPageRoute(builder: (context) => const ResetScreen());
       case RoutesName.premiumScreen2:
         return MaterialPageRoute(builder: (context) => const PremiumScreen2());
+      case RoutesName.personalInfoScreen:
+        return MaterialPageRoute(builder: (context) => const PersonalInfoScreen());
         default:
         return MaterialPageRoute(builder: (context)=> const Scaffold(
             body: Center(

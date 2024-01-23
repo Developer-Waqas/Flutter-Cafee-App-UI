@@ -1,6 +1,6 @@
+import 'package:cafee_app/screens/accont_screen/account_screen.dart';
 import 'package:cafee_app/screens/home_screen/home_screen.dart';
 import 'package:cafee_app/screens/premium_screen/premium_screen.dart';
-import 'package:cafee_app/screens/profile_screen/profile_screen.dart';
 import 'package:cafee_app/screens/scan_pay_screen/scan_pay_screen.dart';
 
 import 'package:cafee_app/utilities/routes/routes_name/routes_name.dart';
@@ -22,13 +22,13 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const ScanPayScreen(),
     const PremiumScreen(),
-    const ProfileScreen(),
+    const AccountScreen(),
   ];
 
   ///data sharing variable===============
   String email = '';
   String name = '';
-
+  String  gender = '';
   ///Navigation bar index===================
   int currentIndex = 0;
 
@@ -107,10 +107,11 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(12),
-                  topLeft: Radius.circular(12),
-                )),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(12),
+                    topLeft: Radius.circular(12),
+                  ),
+                ),
 
                 ///profile picture=========================
                 currentAccountPicture: Container(
@@ -129,7 +130,9 @@ class _MainScreenState extends State<MainScreen> {
               ListTile(
                 leading: const Icon(CupertinoIcons.profile_circled),
                 title: const Text('Profile'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.personalInfoScreen);
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.workspace_premium),
@@ -193,7 +196,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             activeIcon: Icon(CupertinoIcons.qrcode_viewfinder),
-
             backgroundColor: white,
             icon: const Icon(CupertinoIcons.qrcode),
             label: 'Scan/Pay',
@@ -208,7 +210,7 @@ class _MainScreenState extends State<MainScreen> {
             activeIcon: Icon(CupertinoIcons.profile_circled),
             backgroundColor: white,
             icon: const Icon(CupertinoIcons.person),
-            label: 'Profile',
+            label: 'Account',
           ),
         ],
       ),
