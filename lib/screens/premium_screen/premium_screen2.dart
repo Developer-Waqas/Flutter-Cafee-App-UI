@@ -143,7 +143,7 @@ class _PremiumScreen2State extends State<PremiumScreen2> {
                               '4. There are many more intresting offers of\n    premium version.',
                               style: headingStyle3,
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
 
                             ///subscribe button==================
                             Row(
@@ -165,7 +165,7 @@ class _PremiumScreen2State extends State<PremiumScreen2> {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
               ///monthly offer container================
               Padding(
@@ -247,7 +247,7 @@ class _PremiumScreen2State extends State<PremiumScreen2> {
                               '4. There are many more intresting offers of\n    premium version.',
                               style: headingStyle3,
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
 
                             ///subscribe button===============
                             Row(
@@ -269,7 +269,7 @@ class _PremiumScreen2State extends State<PremiumScreen2> {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
               ///Year offer container==============
               Padding(
@@ -351,7 +351,7 @@ class _PremiumScreen2State extends State<PremiumScreen2> {
                               '4. There are many more intresting offers of\n    premium version.',
                               style: headingStyle3,
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
 
                             ///subscribe button=====================
                             Row(
@@ -373,7 +373,7 @@ class _PremiumScreen2State extends State<PremiumScreen2> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
             ],
           ),
         ),

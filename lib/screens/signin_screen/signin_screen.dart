@@ -19,22 +19,27 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+
+  ///Controller=======================================================
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  ///signin form function==============================
   _signInForm() async {
     if (formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
       });
 
+      ///Shared preferences===========================================
       SharedPreferences sp = await SharedPreferences.getInstance();
       sp.setString('name', nameController.text.toString());
       sp.setString('email', emailController.text.toString());
       sp.setBool('isLogin', true);
 
+      ///future function=================================
       await Future.delayed(const Duration(seconds: 3));
       setState(
         () {
@@ -49,11 +54,11 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
+  ///variables==================
   var height, width;
   bool value = false;
 
-  ///email=======
-
+  ///email validate====================
   String? validateEmail(value) {
     RegExp emailValid = RegExp(
         r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
@@ -63,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return null;
   }
 
-  ///password======
+  ///password validate==========================================
   RegExp passValid = RegExp(r"^(?=.*\d)[A-Za-z0-9-]+$");
 
   bool validatePassword(String msg) {
@@ -76,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  ///hide Password
+  ///hide Password=====================
   bool isHidden = true;
 
   void _togglePasswordView() {
@@ -92,9 +97,12 @@ class _SignInScreenState extends State<SignInScreen> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
 
+    ///loading page=======================
     return _isLoading
         ? const LoadingScreen()
         : Scaffold(
+
+      ///scaffold body====================
             body: Container(
               height: height,
               width: width,
@@ -135,6 +143,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+
+                                ///login========================================
                                 Text(
                                   'Login',
                                   style: headingStyle2,

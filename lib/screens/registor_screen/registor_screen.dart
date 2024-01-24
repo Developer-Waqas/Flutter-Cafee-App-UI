@@ -19,6 +19,8 @@ class RegistorScreen extends StatefulWidget {
 }
 
 class _RegistorScreenState extends State<RegistorScreen> {
+
+  ///Controllers=================================================================
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -26,17 +28,21 @@ class _RegistorScreenState extends State<RegistorScreen> {
   TextEditingController lastNameController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+
+  ///Signin form validator function & loading====================
   _signInForm() async {
     if(formKey.currentState!.validate()){
       setState(() {
         _isLoading = true;
       });
 
+      ///Shared preferences==========================================
       SharedPreferences sp = await SharedPreferences.getInstance();
       sp.setString('name', nameController.text.toString());
       sp.setString('email', emailController.text.toString());
       sp.setBool('isSignUp', true);
 
+      ///future function & loading==============================
       await Future.delayed(const Duration(seconds: 3));
       setState(() {
         _isLoading = false;
@@ -47,14 +53,15 @@ class _RegistorScreenState extends State<RegistorScreen> {
   }
 
 
+  ///variables===================
   var height, width;
   bool value = false;
 
-  ///email=======
 
+  ///email function===========================
   String? validateEmail (value) {
     RegExp emailValid = RegExp(
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+        r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
     );
     if (!emailValid.hasMatch(value)){
       return 'Please enter valid Email';
@@ -63,7 +70,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
   }
 
 
-  ///password======
+  ///password function===============================
   RegExp passValid = RegExp(r"^(?=.*\d)[A-Za-z0-9-]+$");
 
   bool validatePassword (String msg){
@@ -79,7 +86,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
 
 
 
-  ///hide Password
+  ///hide Password========================
   bool isHidden = true;
 
   void _togglePasswordView() {
@@ -89,7 +96,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
   }
 
 
-  ///hide Confirm Password
+  ///hide Confirm Password=====================
   bool _isHidden = true;
 
   void togglePasswordView() {
@@ -108,9 +115,12 @@ class _RegistorScreenState extends State<RegistorScreen> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
 
+    ///loading page====================
     return _isLoading
         ? const LoadingScreen()
         : Scaffold(
+
+      ///scaffold body========================
             body: Container(
               height: height,
               width: width,
@@ -151,6 +161,8 @@ class _RegistorScreenState extends State<RegistorScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+
+                                ///Signin========================
                                 Text(
                                   'Sign Up',
                                   style: headingStyle2,
@@ -166,20 +178,20 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 20,
                                 ),
 
-
+                                ///FOrm======================
                                 Form(
                                   key: formKey,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      ///name field==============
+                                      ///first name field==============
                                       Text(
                                         'First Name',
                                         style: headingStyle4,
                                       ),
 
-                                 SizedBox(
+                                 const SizedBox(
                                   height: 5,
                                 ),
                                 CustomTextField(
@@ -201,12 +213,14 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                 const SizedBox(
                                   height: 10,
                                 ),
+
+                                      ///last name field=================
                                       Text(
                                         'Last Name',
                                         style: headingStyle4,
                                       ),
 
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       CustomTextField(
@@ -228,7 +242,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                ///email field=============
+                                ///email field================
                                 Text(
                                   'Email',
                                   style: headingStyle4,
@@ -245,7 +259,7 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   height: 10,
                                 ),
 
-                                ///password field===============
+                                ///password field=====================
                                 Text(
                                   'Password',
                                   style: headingStyle4,
@@ -289,10 +303,10 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                     }
                                   },
                                 ),
-                                      SizedBox(height: 10,),
+                                      const SizedBox(height: 10,),
 
 
-                                      ///Confirm password field===============
+                                      ///Confirm password field=====================
                                       Text(
                                         'Confirm Password',
                                         style: headingStyle4,
@@ -341,6 +355,8 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                     ],
                                   ),
                           ),
+
+                                ///checkbox====================
                                 Row(
                                   children: [
                                     Checkbox(
@@ -379,6 +395,8 @@ class _RegistorScreenState extends State<RegistorScreen> {
                                   padding: const EdgeInsets.only(left: 33),
                                   child: Row(
                                     children: [
+
+                                      ///Already have an account=================
                                       Text(
                                         'Already have an Account?',
                                         style: headingStyle3,

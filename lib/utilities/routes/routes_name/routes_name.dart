@@ -10,8 +10,5 @@ class RoutesName {
   static const pinCodeScreen2 = 'pin_code_screen2';
   static const resetScreen = 'reset_password_screen';
   static const premiumScreen2 = 'premium_screen2';
-  static const personalInfoScreen = 'personal_info_screen';
-
-
 
 }

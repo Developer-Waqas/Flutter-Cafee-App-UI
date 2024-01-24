@@ -15,12 +15,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
 
+  ///init state function==============
   void initState() {
     super.initState();
 
     isSignUp();
   }
 
+  ///data loading function===========================
   void isSignUp() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
 
@@ -28,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isLogin = sp.getBool('isLogin') ?? false;
 
 
+    ///page routing condition=================================
     if(isSignUp){
       Timer(const Duration(seconds: 3), () {
         Navigator.pushNamedAndRemoveUntil(context, RoutesName.mainScreen, (route) => false);
@@ -39,7 +42,6 @@ class _SplashScreenState extends State<SplashScreen> {
             context, RoutesName.mainScreen, (route) => false);
       });
     }
-
     else {
       Timer(const Duration(seconds: 3), () {
         Navigator.pushNamedAndRemoveUntil(context, RoutesName.signInScreen, (route) => false);
@@ -63,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Center(
               child: Text('Waqas Coffee Shop',style: headingStyle8,),
             ),

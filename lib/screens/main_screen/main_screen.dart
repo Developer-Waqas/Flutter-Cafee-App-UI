@@ -130,9 +130,7 @@ class _MainScreenState extends State<MainScreen> {
               ListTile(
                 leading: const Icon(CupertinoIcons.profile_circled),
                 title: const Text('Profile'),
-                onTap: () {
-                  Navigator.pushNamed(context, RoutesName.personalInfoScreen);
-                },
+                onTap: () {},
               ),
               ListTile(
                 leading: const Icon(Icons.workspace_premium),
@@ -187,6 +185,8 @@ class _MainScreenState extends State<MainScreen> {
           currentIndex = index;
           setState(() {});
         },
+
+        ///bottom navigation bar list====================
         items: [
           BottomNavigationBarItem(
             activeIcon: Icon(CupertinoIcons.house_fill),

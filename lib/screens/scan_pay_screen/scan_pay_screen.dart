@@ -61,6 +61,7 @@ class _ScanPayScreenState extends State<ScanPayScreen> {
 
 
           Center(
+            ///scan container===========================
             child: Container(
               height: 548,
               width: 341,

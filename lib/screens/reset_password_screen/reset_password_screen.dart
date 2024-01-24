@@ -18,10 +18,14 @@ class ResetScreen extends StatefulWidget {
 }
 
 class _ResetScreenState extends State<ResetScreen> {
+
+  ///Controller===================================================================
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+
+  ///reset form function===============================
   _resetForm() async {
     if (formKey.currentState!.validate()) {
       setState(() {
@@ -36,10 +40,11 @@ class _ResetScreenState extends State<ResetScreen> {
     }
   }
 
+  ///variables======================
   var height, width;
   bool value = false;
 
-  ///password======
+  ///password validate===================================
   RegExp passValid = RegExp(r"^(?=.*\d)[A-Za-z0-9-]+$");
 
   bool validatePassword(String msg) {
@@ -52,7 +57,7 @@ class _ResetScreenState extends State<ResetScreen> {
     }
   }
 
-  ///hide Password
+  ///hide Password==============================
   bool isHidden = true;
 
   void _togglePasswordView() {
@@ -61,7 +66,7 @@ class _ResetScreenState extends State<ResetScreen> {
     });
   }
 
-  ///hide Confirm Password
+  ///hide Confirm Password=========================
   bool _isHidden = true;
 
   void togglePasswordView() {
@@ -70,17 +75,21 @@ class _ResetScreenState extends State<ResetScreen> {
     });
   }
 
-  ///loading screen========
+  ///loading screen===========================
   bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+
+    ///variable declaration============================
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
 
+    ///loading page===========================
     return _isLoading
         ? const LoadingScreen()
         : Scaffold(
+      ///Scaffold body=======================
             body: Container(
               height: height,
               width: width,
@@ -121,6 +130,8 @@ class _ResetScreenState extends State<ResetScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+
+                                ///reset password=======================
                                 Text(
                                   'Reset Password',
                                   style: headingStyle2,

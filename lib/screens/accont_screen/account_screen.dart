@@ -1,9 +1,7 @@
 import 'package:cafee_app/constants/app_style/app_style.dart';
-import 'package:cafee_app/utilities/routes/routes_name/routes_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../constants/app_color/app_color.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -17,14 +15,14 @@ class _AccountScreenState extends State<AccountScreen> {
   ///data sharing variable===============
   String name = '';
 
-  ///initstate function==============
+  ///init state function==============
   @override
   void initState() {
     super.initState();
     loadData();
   }
 
-  ///switch
+  ///switch button==============
   bool _value1 = false;
   bool _value2 = false;
   bool _value3 = false;
@@ -55,6 +53,8 @@ class _AccountScreenState extends State<AccountScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+
+                  ///account==========
                   const Text(
                     'Account',
                     style: TextStyle(
@@ -73,6 +73,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                 ],
               ),
+
+              ///welcome==============
               Row(
                 children: [
                   Text(
@@ -101,6 +103,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   children: [
                     Row(
                       children: [
+
+                        ///profile===============
                         Text('Profile',
                           style: TextStyle(
                               fontSize: 20,
@@ -111,12 +115,12 @@ class _AccountScreenState extends State<AccountScreen> {
                         ),
                       ],
                     ),
+
+                     ///Profile Lists==============
                      ListTile(
-                      title: Text('Personal Info'),
-                      trailing: Icon(CupertinoIcons.info),
-                      onTap: (){
-                        Navigator.pushNamed(context, RoutesName.personalInfoScreen);
-                      },
+                      title: const Text('Personal Info'),
+                      trailing: const Icon(CupertinoIcons.info),
+                      onTap: (){},
                     ),
         
                     const ListTile(
@@ -147,6 +151,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
+                    ///security====================
                     Row(
                       children: [
                         Text('Security',
@@ -159,6 +165,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         ),
                       ],
                     ),
+
+                    ///security lists=====================
                     ListTile(
                       title: const Text('2 - factor authentication'),
                       trailing: Switch.adaptive(
@@ -204,6 +212,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   children: [
                     Row(
                       children: [
+
+                        ///Notification===================
                         Text('Notification Preferences',
                           style: TextStyle(
                               fontSize: 20,
@@ -214,6 +224,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         ),
                       ],
                     ),
+
+                    ///Notification Lists================
                     ListTile(
                         title: const Text('Show notifications'),
                         trailing: Switch.adaptive(
@@ -225,6 +237,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         })
                     ),
 
+                    ///notification lists=======================
                     ListTile(
                         title: const Text('Security Alert'),
                         trailing: Switch.adaptive(
@@ -248,8 +261,8 @@ class _AccountScreenState extends State<AccountScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 10,),
-              Divider(),
+              const SizedBox(height: 10,),
+              const Divider(),
             ],
           ),
         ),

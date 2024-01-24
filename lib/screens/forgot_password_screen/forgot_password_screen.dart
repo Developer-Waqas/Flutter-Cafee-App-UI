@@ -17,10 +17,14 @@ class ForgotSreen extends StatefulWidget {
 }
 
 class _ForgotScreenState extends State<ForgotSreen> {
+
+  ///email controller=================
   TextEditingController emailController = TextEditingController();
 
+  ///form key===================
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  ///validate & loading function==================
   _forgotForm() async {
     if(formKey.currentState!.validate()){
       setState(() {
@@ -36,11 +40,11 @@ class _ForgotScreenState extends State<ForgotSreen> {
   }
 
 
+  ///variable=============
   var height, width;
   bool value = false;
 
-  ///email=======
-
+  ///email validator=================
   String? validateEmail (value) {
     RegExp emailValid = RegExp(
         r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
@@ -51,18 +55,22 @@ class _ForgotScreenState extends State<ForgotSreen> {
     return null;
   }
 
- ///for loading page============
-
+ ///for loading page variable=================
   bool _isLoading = false;
+
 
   @override
   Widget build(BuildContext context) {
+
+    ///height/width variables declarations===============
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
 
+    ///loading page=================
     return _isLoading
         ? const LoadingScreen()
         : Scaffold(
+      ///Scaffold body===========
       body: Container(
         height: height,
         width: width,
@@ -72,6 +80,7 @@ class _ForgotScreenState extends State<ForgotSreen> {
             children: [
               Column(
                 children: [
+                  ///image==============
                   Container(
                     height: height * 0.15,
                     width: MediaQuery.of(context).size.width,

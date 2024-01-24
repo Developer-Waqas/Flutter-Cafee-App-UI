@@ -11,6 +11,8 @@ class PremiumScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: btnTextColor,
+
+      ///scaffold body=================
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -104,7 +106,7 @@ class PremiumScreen extends StatelessWidget {
                               '4. There are many more intresting offers of\n    premium version.',
                               style: headingStyle3,
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
 
                             ///subscribe button==================
                             Row(
@@ -126,7 +128,7 @@ class PremiumScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
               ///monthly offer container================
               Padding(
@@ -208,7 +210,7 @@ class PremiumScreen extends StatelessWidget {
                               '4. There are many more intresting offers of\n    premium version.',
                               style: headingStyle3,
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
 
                             ///subscribe button===============
                             Row(
@@ -230,7 +232,7 @@ class PremiumScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
               ///Year offer container==============
               Padding(
@@ -312,7 +314,7 @@ class PremiumScreen extends StatelessWidget {
                               '4. There are many more intresting offers of\n    premium version.',
                               style: headingStyle3,
                             ),
-                            SizedBox(height: 5,),
+                            const SizedBox(height: 5,),
 
                             ///subscribe button=====================
                             Row(
@@ -334,7 +336,7 @@ class PremiumScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
             ],
           ),
         ),
