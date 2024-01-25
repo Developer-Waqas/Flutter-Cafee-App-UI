@@ -189,25 +189,25 @@ class _MainScreenState extends State<MainScreen> {
         ///bottom navigation bar list====================
         items: [
           BottomNavigationBarItem(
-            activeIcon: Icon(CupertinoIcons.house_fill),
+            activeIcon: const Icon(CupertinoIcons.house_fill),
             backgroundColor: white,
             icon: const Icon(CupertinoIcons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(CupertinoIcons.qrcode_viewfinder),
+            activeIcon: const Icon(CupertinoIcons.qrcode_viewfinder),
             backgroundColor: white,
             icon: const Icon(CupertinoIcons.qrcode),
             label: 'Scan/Pay',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.workspace_premium),
+            activeIcon: const Icon(Icons.workspace_premium),
             backgroundColor: white,
             icon: const Icon(Icons.workspace_premium_rounded),
             label: 'Premium',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(CupertinoIcons.profile_circled),
+            activeIcon: const Icon(CupertinoIcons.profile_circled),
             backgroundColor: white,
             icon: const Icon(CupertinoIcons.person),
             label: 'Account',

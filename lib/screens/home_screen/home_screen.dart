@@ -299,7 +299,7 @@ class _HomeScreenState extends State<HomeScreen> {
               childAspectRatio: 150 / 170,
               shrinkWrap: true,
               children: [
-                for (int i = 0; i < img.length; i++)
+                for (int i = 0 ; i < img.length ; i++)
                   ListView(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     children: [
