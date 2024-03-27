@@ -95,13 +95,13 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
               const Divider(),
         
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Row(
                       children: [
 
                         ///profile===============
@@ -115,45 +115,45 @@ class _AccountScreenState extends State<AccountScreen> {
                         ),
                       ],
                     ),
+                  ),
 
-                     ///Profile Lists==============
-                     ListTile(
-                      title: const Text('Personal Info'),
-                      trailing: const Icon(CupertinoIcons.info),
-                      onTap: (){},
-                    ),
-        
-                    const ListTile(
-                      title: Text('Cards & Payments'),
-                      trailing: Icon(CupertinoIcons.creditcard),
-                    ),
-                    const ListTile(
-                      title: Text('Transaction History'),
-                      trailing: Icon(Icons.checklist_sharp),
-                    ),
-        
-                    const ListTile(
-                      title: Text('Privacy & Data'),
-                      trailing: Icon(CupertinoIcons.hand_raised_fill),
-                    ),
-                    const ListTile(
-                      title: Text('Account ID'),
-                      trailing: Icon(CupertinoIcons.person_crop_rectangle),
-                    ),
-                  ],
-                ),
+                   ///Profile Lists==============
+                   ListTile(
+                    title: const Text('Personal Info'),
+                    trailing: const Icon(CupertinoIcons.info),
+                    onTap: (){},
+                  ),
+
+                  const ListTile(
+                    title: Text('Cards & Payments'),
+                    trailing: Icon(CupertinoIcons.creditcard),
+                  ),
+                  const ListTile(
+                    title: Text('Transaction History'),
+                    trailing: Icon(Icons.checklist_sharp),
+                  ),
+
+                  const ListTile(
+                    title: Text('Privacy & Data'),
+                    trailing: Icon(CupertinoIcons.hand_raised_fill),
+                  ),
+                  const ListTile(
+                    title: Text('Account ID'),
+                    trailing: Icon(CupertinoIcons.person_crop_rectangle),
+                  ),
+                ],
               ),
               const Divider(),
         
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                    ///security====================
-                    Row(
+                  ///security====================
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Row(
                       children: [
                         Text('Security',
                           style: TextStyle(
@@ -165,52 +165,52 @@ class _AccountScreenState extends State<AccountScreen> {
                         ),
                       ],
                     ),
+                  ),
 
-                    ///security lists=====================
-                    ListTile(
-                      title: const Text('2 - factor authentication'),
+                  ///security lists=====================
+                  ListTile(
+                    title: const Text('2 - factor authentication'),
+                    trailing: Switch.adaptive(
+                      activeColor: btnColor,
+                        value: _value1, onChanged: (newValue){
+                      setState(() {
+                        _value1 = newValue;
+                      });
+                    })
+                  ),
+
+                  ListTile(
+                      title: const Text('Face ID'),
                       trailing: Switch.adaptive(
-                        activeColor: Colors.green,
-                          value: _value1, onChanged: (newValue){
+                          activeColor: btnColor,
+                          value: _value2, onChanged: (newValue){
                         setState(() {
-                          _value1 = newValue;
+                          _value2 = newValue;
                         });
                       })
-                    ),
-
-                    ListTile(
-                        title: const Text('Face ID'),
-                        trailing: Switch.adaptive(
-                            activeColor: Colors.green,
-                            value: _value2, onChanged: (newValue){
-                          setState(() {
-                            _value2 = newValue;
-                          });
-                        })
-                    ),
-                    ListTile(
-                        title: const Text('Passcode lock'),
-                        trailing: Switch.adaptive(
-                            activeColor: Colors.green,
-                            value: _value3, onChanged: (newValue){
-                          setState(() {
-                            _value3 = newValue;
-                          });
-                        })
-                    ),
-                    const SizedBox(height: 10,),
-                  ],
-                ),
+                  ),
+                  ListTile(
+                      title: const Text('Passcode lock'),
+                      trailing: Switch.adaptive(
+                          activeColor: btnColor,
+                          value: _value3, onChanged: (newValue){
+                        setState(() {
+                          _value3 = newValue;
+                        });
+                      })
+                  ),
+                  const SizedBox(height: 10,),
+                ],
               ),
               const Divider(),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Row(
                       children: [
 
                         ///Notification===================
@@ -224,42 +224,42 @@ class _AccountScreenState extends State<AccountScreen> {
                         ),
                       ],
                     ),
+                  ),
 
-                    ///Notification Lists================
-                    ListTile(
-                        title: const Text('Show notifications'),
-                        trailing: Switch.adaptive(
-                            activeColor: Colors.green,
-                            value: _value4, onChanged: (newValue){
-                          setState(() {
-                            _value4 = newValue;
-                          });
-                        })
-                    ),
+                  ///Notification Lists================
+                  ListTile(
+                      title: const Text('Show notifications'),
+                      trailing: Switch.adaptive(
+                          activeColor: btnColor,
+                          value: _value4, onChanged: (newValue){
+                        setState(() {
+                          _value4 = newValue;
+                        });
+                      })
+                  ),
 
-                    ///notification lists=======================
-                    ListTile(
-                        title: const Text('Security Alert'),
-                        trailing: Switch.adaptive(
-                            activeColor: Colors.green,
-                            value: _value5, onChanged: (newValue){
-                          setState(() {
-                            _value5 = newValue;
-                          });
-                        })
-                    ),
-                    ListTile(
-                        title: const Text('New Drinks'),
-                        trailing: Switch.adaptive(
-                            activeColor: Colors.green,
-                            value: _value6, onChanged: (newValue){
-                          setState(() {
-                            _value6 = newValue;
-                          });
-                        })
-                    ),
-                  ],
-                ),
+                  ///notification lists=======================
+                  ListTile(
+                      title: const Text('Security Alert'),
+                      trailing: Switch.adaptive(
+                          activeColor: btnColor,
+                          value: _value5, onChanged: (newValue){
+                        setState(() {
+                          _value5 = newValue;
+                        });
+                      })
+                  ),
+                  ListTile(
+                      title: const Text('New Drinks'),
+                      trailing: Switch.adaptive(
+                          activeColor: btnColor,
+                          value: _value6, onChanged: (newValue){
+                        setState(() {
+                          _value6 = newValue;
+                        });
+                      })
+                  ),
+                ],
               ),
               const SizedBox(height: 10,),
               const Divider(),

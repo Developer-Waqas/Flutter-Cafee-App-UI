@@ -1,5 +1,3 @@
-
-import 'package:cafee_app/constants/app_color/app_color.dart';
 import 'package:flutter/material.dart';
 
 import 'utilities/routes/routes_name/routes_name.dart';

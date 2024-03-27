@@ -19,25 +19,36 @@ class _HomeScreenState extends State<HomeScreen> {
   String email = '';
   String name = '';
 
-  ///images List==========
-  List img = [
-    'img_hotcoffee',
-    'img_hottea',
-    'img_hotdrinks',
-    'img_frapuccino',
-    'img_coldcoffee',
-    'img_icedtea',
-    'img_colddrinks',
-  ];
-
-  List imgName = [
-    'Hot Coffee',
-    'Hot Tea',
-    'Hot Drink',
-    'Frapuccino',
-    'Cold Coffee',
-    'Iced Tea',
-    'Cold Drink'
+  ///List of Images and Names=================================
+  List<Map<String, dynamic>> dataList = [
+    {
+      "name": "Hot Coffee",
+      "image": "img_hotcoffee",
+    },
+    {
+      "name": "Hot Tea",
+      "image": "img_hottea",
+    },
+    {
+      "name": "Hot Drink",
+      "image": "img_hotdrinks",
+    },
+    {
+      "name": "Frapuccino",
+      "image": "img_frapuccino",
+    },
+    {
+      "name": "Cold Coffee",
+      "image": "img_coldcoffee",
+    },
+    {
+      "name": "Iced Tea",
+      "image": "img_icedtea",
+    },
+    {
+      "name": "Cold Drink",
+      "image": "img_colddrinks",
+    },
   ];
 
   ///initstate function==============
@@ -151,6 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ///Scaffold body===================
       body:
       SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             const SizedBox(height: 20,),
@@ -293,11 +305,69 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             ///Coffee types pictures================
-            GridView.count(
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: GridView.builder(
+                itemCount: dataList.length,
+                shrinkWrap: true,
+                primary: false,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisExtent: 150,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10
+                ),
+                itemBuilder: (context, index) {
+
+                  return GestureDetector(
+                    onTap: (){
+                      print("$index-----------------------------");
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 1),
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      decoration: BoxDecoration(
+                        color: const Color(0xffF9F9F9),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: Image.asset(
+                              "assets/images/${dataList[index]['image']}.png",
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 8,
+                            ),
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "${dataList[index]['name']}",
+                                style: headingStyle11,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+
+            /*GridView.count(
 
               crossAxisCount: 3,
               childAspectRatio: 150 / 170,
               shrinkWrap: true,
+
               children: [
                 for (int i = 0 ; i < img.length ; i++)
                   ListView(
@@ -342,7 +412,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
               ],
-            ),
+            ),*/
           ],
         ),
       ),
