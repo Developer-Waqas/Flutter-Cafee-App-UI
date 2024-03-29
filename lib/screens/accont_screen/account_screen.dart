@@ -214,14 +214,14 @@ class _AccountScreenState extends State<AccountScreen> {
                       children: [
 
                         ///Notification===================
-                        // Text('Notification Preferences',
-                        //   style: TextStyle(
-                        //       fontSize: 20,
-                        //       fontFamily: 'Poppins Bold',
-                        //       color: black
-                        //   ),
-                        //   textAlign: TextAlign.start,
-                        // ),
+                        Text('Notification Preferences',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Poppins Bold',
+                              color: black
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
                       ],
                     ),
                   ),
